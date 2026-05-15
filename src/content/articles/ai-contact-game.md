@@ -9,6 +9,8 @@ source: "https://www.linkedin.com/pulse/ai-contact-game-nikita-fomin-jzqqe/"
 
 *Originally published on [LinkedIn](https://www.linkedin.com/pulse/ai-contact-game-nikita-fomin-jzqqe/).*
 
+![AI Contact Game cover](/images/cover.png)
+
 ---
 
 Have you ever played the word game "Contact"? In Russian, it is known as "Есть контакт". I'm not sure whether people play it in other languages. There isn't even a Wikipedia article about it in English. Anyway, here are the rules.
@@ -45,11 +47,23 @@ Recently I remembered this game and built a small project where LLMs play this g
 
 **Repo:** [fomin-n/ai-contact-game](https://github.com/fomin-n/ai-contact-game)
 
+It looks like this:
+
+![Game UI schema](/images/schema.png)
+
+![AI vs AI gameplay](/images/aivsai.gif)
+
 You can configure the game directly from the UI: choose the language, select the game mode, optionally set the Secret Word, and define personalities for Player A and Player B. You can also choose which AI model controls each role.
 
 There is a difference from the human version. In the real game, the Word Master might simply fail to react fast enough. In my LLM version, I always give the Word Master a chance to guess and block the contact before the round continues.
 
-You can also choose the secret word yourself and try to stop the models from guessing it. Or play as one of the players and try to guess the word together with another model.
+You can also choose the secret word yourself and try to stop the models from guessing it.
+
+![Playing as Word Master](/images/wordmaster.gif)
+
+Or play as one of the players and try to guess the word together with another model.
+
+![Playing as a guesser](/images/player.gif)
 
 ---
 
