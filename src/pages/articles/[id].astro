@@ -12,18 +12,14 @@ export async function getStaticPaths() {
 
 const { article } = Astro.props;
 const { Content } = await render(article);
-
-const readingTime = Math.max(1, Math.ceil((article.body ?? '').split(/\s+/).length / 200));
 ---
 
 <ArticleLayout
   title={article.data.title}
   description={article.data.description}
   date={article.data.date}
-  author={article.data.author}
   source={article.data.source}
   tags={article.data.tags}
-  readingTime={readingTime}
 >
   <Content />
 </ArticleLayout>

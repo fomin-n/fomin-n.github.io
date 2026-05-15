@@ -5,20 +5,14 @@ interface Props {
   title: string;
   description: string;
   date: Date;
-  author: string;
   source?: string;
   tags?: string[];
-  readingTime: number;
   canonicalURL?: string;
 }
 
-const { title, description, date, author, source, tags, readingTime, canonicalURL } = Astro.props;
+const { title, description, date, source, tags, canonicalURL } = Astro.props;
 
-const formattedDate = date.toLocaleDateString('en-US', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-});
+const isoDate = date.toISOString().slice(0, 10);
 ---
 
 <BaseLayout title={title} description={description} ogType="article" canonicalURL={canonicalURL}>
@@ -34,11 +28,7 @@ const formattedDate = date.toLocaleDateString('en-US', {
       <header class="article-header">
         <h1 class="article-title">{title}</h1>
         <div class="article-meta">
-          <span>{author}</span>
-          <span class="article-meta__separator">·</span>
-          <time datetime={date.toISOString()}>{formattedDate}</time>
-          <span class="article-meta__separator">·</span>
-          <span>{readingTime} min read</span>
+          <time datetime={date.toISOString()}>{isoDate}</time>
         </div>
         {tags && tags.length > 0 && (
           <div class="article-card__tags" style="margin-top: 1rem;">
