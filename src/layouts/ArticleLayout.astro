@@ -1,0 +1,63 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  author: string;
+  source?: string;
+  tags?: string[];
+  readingTime: number;
+  canonicalURL?: string;
+}
+
+const { title, description, date, author, source, tags, readingTime, canonicalURL } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={title} description={description} ogType="article" canonicalURL={canonicalURL}>
+  <div class="container article-page">
+    <a href="/articles" class="article-back">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      All articles
+    </a>
+
+    <article>
+      <header class="article-header">
+        <h1 class="article-title">{title}</h1>
+        <div class="article-meta">
+          <span>{author}</span>
+          <span class="article-meta__separator">·</span>
+          <time datetime={date.toISOString()}>{formattedDate}</time>
+          <span class="article-meta__separator">·</span>
+          <span>{readingTime} min read</span>
+          {source && (
+            <>
+              <span class="article-meta__separator">·</span>
+              <a href={source} target="_blank" rel="noopener noreferrer">
+                Original ↗
+              </a>
+            </>
+          )}
+        </div>
+        {tags && tags.length > 0 && (
+          <div class="article-card__tags" style="margin-top: 1rem;">
+            {tags.map(tag => <span class="tag">{tag}</span>)}
+          </div>
+        )}
+      </header>
+
+      <div class="prose">
+        <slot />
+      </div>
+    </article>
+  </div>
+</BaseLayout>

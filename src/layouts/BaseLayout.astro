@@ -1,0 +1,102 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  canonicalURL?: string;
+  ogType?: 'website' | 'article';
+}
+
+const {
+  title,
+  description = 'Technical notes on ML, LLMs, engineering, and research — by Nikita Fomin.',
+  canonicalURL = Astro.url.href,
+  ogType = 'website',
+} = Astro.props;
+
+const siteTitle = 'Nikita Fomin';
+const fullTitle = title === siteTitle ? title : `${title} — ${siteTitle}`;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Theme: applied before paint to prevent flash -->
+    <script is:inline>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = stored || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a href="/" class="site-header__logo">Nikita Fomin</a>
+        <nav class="site-header__nav" aria-label="Main navigation">
+          <a href="/articles" class:list={['nav-link', { active: currentPath.startsWith('/articles') }]}>
+            Articles
+          </a>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" type="button">
+            <!-- Sun icon (shown in dark mode) -->
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+            </svg>
+            <!-- Moon icon (shown in light mode) -->
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <span>© {new Date().getFullYear()} Nikita Fomin</span>
+        <div class="site-footer__links">
+          <a href="https://github.com/fomin-n" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/fomin-n/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById('theme-toggle');
+      btn?.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>
