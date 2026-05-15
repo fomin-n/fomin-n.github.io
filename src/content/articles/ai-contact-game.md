@@ -7,8 +7,6 @@ tags: ["llm", "ai", "games", "experiments"]
 source: "https://www.linkedin.com/pulse/ai-contact-game-nikita-fomin-jzqqe/"
 ---
 
-*Originally published on [LinkedIn](https://www.linkedin.com/pulse/ai-contact-game-nikita-fomin-jzqqe/).*
-
 ![AI Contact Game cover](/images/cover.png)
 
 ---

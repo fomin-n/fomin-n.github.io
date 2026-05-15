@@ -39,14 +39,6 @@ const formattedDate = date.toLocaleDateString('en-US', {
           <time datetime={date.toISOString()}>{formattedDate}</time>
           <span class="article-meta__separator">·</span>
           <span>{readingTime} min read</span>
-          {source && (
-            <>
-              <span class="article-meta__separator">·</span>
-              <a href={source} target="_blank" rel="noopener noreferrer">
-                Original ↗
-              </a>
-            </>
-          )}
         </div>
         {tags && tags.length > 0 && (
           <div class="article-card__tags" style="margin-top: 1rem;">
