@@ -11,30 +11,50 @@ source: "https://www.linkedin.com/pulse/ai-contact-game-nikita-fomin-jzqqe/"
 
 ---
 
-## The Game
+Have you ever played the word game "Contact"? In Russian, it is known as "Есть контакт". I'm not sure whether people play it in other languages. There isn't even a Wikipedia article about it in English. Anyway, here are the rules.
 
-Contact is a word game where one player — the *Word Master* — secretly picks a word and reveals only its first letter. Everyone else tries to stump the Word Master by describing other words that start with that same letter, without making the clue too obvious.
+## Rules
 
-When two guessers think they've landed on the same word from a clue, they shout **"Contact!"** and count down from three. If they say the same word simultaneously, the Word Master is forced to reveal the next letter. The loop continues until someone finally guesses the secret word outright. No word can ever be reused.
+You need at least three players. One player is the **Word Master**. They secretly choose a Secret Word and reveal only the first letter. For example:
 
-It's a game about language, lateral thinking, and the small gap between what you mean and what you say.
+> "A.."
+
+The other players now try to describe some other word that starts with the same letter, without letting the Word Master understand it first. For example, one player might say:
+
+> "Who was Hugo Weaving in The Matrix?"
+
+If another player thinks they understood the clue, they say:
+
+> "Contact!"
+
+Then, on the count of three, both players must say the same word:
+
+> "Agent"
+
+If they say different words, or if the Word Master guesses the word first, the attempt is blocked.
+
+But if the contact succeeds, the Word Master must reveal the next letter of the Secret Word. For example:
+
+> "Ap…"
+
+Now the players need to communicate words that start with "Ap". The game continues like this until someone guesses the Secret Word. You also cannot reuse words.
+
+## Project
+
+Recently I remembered this game and built a small project where LLMs play this game with each other.
+
+**Repo:** [fomin-n/ai-contact-game](https://github.com/fomin-n/ai-contact-game)
+
+You can configure the game directly from the UI: choose the language, select the game mode, optionally set the Secret Word, and define personalities for Player A and Player B. You can also choose which AI model controls each role.
+
+There is a difference from the human version. In the real game, the Word Master might simply fail to react fast enough. In my LLM version, I always give the Word Master a chance to guess and block the contact before the round continues.
+
+You can also choose the secret word yourself and try to stop the models from guessing it. Or play as one of the players and try to guess the word together with another model.
 
 ---
 
-## The LLM Version
+Thanks for your attention.
 
-I recently built a project where language models play Contact with each other.
+*P.S. I have chosen a secret word. The first letter is:*
 
-The implementation lets you configure the game through a UI: choose the language, game mode, the secret word, and assign personalities to each player. You can pick which AI model controls each role — Word Master, guesser, or both.
-
-One deliberate design choice I made differs from how humans play: **I always give the Word Master a chance to guess and block the contact before the round continues.** This keeps the game fair against models that might otherwise be too quick.
-
-You can also step into the game yourself — set your own secret word, act as the Word Master trying to stop the models, or join as a fellow guesser alongside an AI teammate.
-
-The project is on GitHub: [fomin-n/ai-contact-game](https://github.com/fomin-n/ai-contact-game)
-
----
-
-## What's Next
-
-My chosen secret word starts with **B…**
+**"B…"**
