@@ -53,9 +53,6 @@ const currentPath = Astro.url.pathname;
       <div class="container site-header__inner">
         <a href="/" class="site-header__logo">Nikita Fomin</a>
         <nav class="site-header__nav" aria-label="Main navigation">
-          <a href="/articles" class:list={['nav-link', { active: currentPath.startsWith('/articles') }]}>
-            Articles
-          </a>
           <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" type="button">
             <!-- Sun icon (shown in dark mode) -->
             <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
