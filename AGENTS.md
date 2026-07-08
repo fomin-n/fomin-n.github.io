@@ -8,6 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 npm run dev      # local dev server at http://localhost:4321
 npm run build    # production build to ./dist
 npm run preview  # serve the built dist locally
+npm run check    # type-check with astro check
 ```
 
 Deploy is triggered automatically on push to `main`. To deploy manually:
