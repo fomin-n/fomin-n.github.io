@@ -1,5 +1,5 @@
 ---
-title: "nutrition-agent: A Calorie-Estimating Telegram Bot with Models on a Leash"
+title: "nutrition-agent: a small agentic system for estimating calories and macros"
 description: "A pet project that turns a meal description or food photo into a calorie and macro estimate, using a fixed LangGraph state machine that scopes the models to classification and structuring while keeping the math deterministic."
 date: 2026-07-06
 author: "Nikita Fomin"
