@@ -45,6 +45,8 @@ Recently I remembered this game and built a small project where LLMs play this g
 
 **Repo:** [fomin-n/ai-contact-game](https://github.com/fomin-n/ai-contact-game)
 
+**Telegram bot:** [@ai_contact_game_bot](https://t.me/ai_contact_game_bot)
+
 It looks like this:
 
 ![Game UI schema](/images/schema.png)
