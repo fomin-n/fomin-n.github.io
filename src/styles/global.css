@@ -609,6 +609,16 @@ main {
   margin: 2em auto;
 }
 
+.prose video.article-demo {
+  display: block;
+  width: min(100%, 430px);
+  height: auto;
+  margin: 2em auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #000;
+}
+
 .prose table {
   width: 100%;
   border-collapse: collapse;
