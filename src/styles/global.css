@@ -489,6 +489,18 @@ main {
   color: var(--accent);
 }
 
+.article-cover {
+  display: block;
+  width: min(var(--wide-width), calc(100vw - 2rem));
+  max-width: none;
+  height: auto;
+  margin: 2rem 0 0 50%;
+  transform: translateX(-50%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+}
+
 /* ── Prose (article body) ──────────────────────────────────────────────── */
 .prose {
   font-family: var(--font-body);
@@ -520,6 +532,10 @@ main {
 .prose h2 { font-size: 1.375rem; border-bottom: 1px solid var(--border); padding-bottom: 0.35em; }
 .prose h3 { font-size: 1.125rem; }
 .prose h4 { font-size: 1rem; }
+
+.article--hide-first-heading .prose > h1:first-child {
+  display: none;
+}
 
 .prose strong { font-weight: 600; }
 
@@ -556,6 +572,8 @@ main {
   padding: 0.15em 0.4em;
   border-radius: 4px;
   border: 1px solid var(--border);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .prose pre {
@@ -576,6 +594,8 @@ main {
   border: none;
   padding: 0;
   font-size: inherit;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .prose ul,
@@ -609,6 +629,13 @@ main {
   margin: 2em auto;
 }
 
+.article--wide-media .prose img {
+  width: min(var(--wide-width), calc(100vw - 2rem));
+  max-width: none;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
 .prose video.article-demo {
   display: block;
   width: min(100%, 430px);
@@ -626,6 +653,9 @@ main {
   margin: 1.75em 0;
   overflow-x: auto;
   display: block;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable;
 }
 
 .prose thead {
@@ -637,6 +667,13 @@ main {
   padding: 0.6em 1em;
   text-align: left;
   border: 1px solid var(--border);
+  min-width: 7rem;
+  vertical-align: top;
+}
+
+.prose th:first-child,
+.prose td:first-child {
+  min-width: 9rem;
 }
 
 .prose th {
@@ -644,6 +681,12 @@ main {
   font-weight: 600;
   font-size: 0.875em;
   color: var(--text-secondary);
+}
+
+.prose .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
 }
 
 /* ── Social Icons ──────────────────────────────────────────────────────── */

@@ -1,9 +1,12 @@
 ---
+import 'katex/dist/katex.min.css';
+
 interface Props {
   title: string;
   description?: string;
   canonicalURL?: string;
   ogType?: 'website' | 'article';
+  ogImage?: string;
 }
 
 const {
@@ -11,11 +14,12 @@ const {
   description = 'Technical notes on ML, LLMs, engineering, and research — by Nikita Fomin.',
   canonicalURL = Astro.url.href,
   ogType = 'website',
+  ogImage,
 } = Astro.props;
 
 const siteTitle = 'Nikita Fomin';
 const fullTitle = title === siteTitle ? title : `${title} — ${siteTitle}`;
-const currentPath = Astro.url.pathname;
+const absoluteOgImage = ogImage ? new URL(ogImage, Astro.site ?? Astro.url).href : undefined;
 ---
 
 <!doctype html>
@@ -33,7 +37,12 @@ const currentPath = Astro.url.pathname;
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
-    <meta name="twitter:card" content="summary" />
+    {absoluteOgImage && <meta property="og:image" content={absoluteOgImage} />}
+    {absoluteOgImage && <meta property="og:image:alt" content={title} />}
+    <meta name="twitter:card" content={absoluteOgImage ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    {absoluteOgImage && <meta name="twitter:image" content={absoluteOgImage} />}
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 

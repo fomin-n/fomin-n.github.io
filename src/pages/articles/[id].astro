@@ -20,6 +20,10 @@ const { Content } = await render(article);
   date={article.data.date}
   source={article.data.source}
   tags={article.data.tags}
+  cover={article.data.cover}
+  coverAlt={article.data.coverAlt}
+  hideFirstHeading={article.data.hideFirstHeading}
+  wideMedia={article.data.wideMedia}
 >
   <Content />
 </ArticleLayout>
